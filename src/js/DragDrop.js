@@ -24,10 +24,16 @@ export default class DragDrop {
     this.draggedEl = e.target.closest(".item");
     this.ghostEl = this.draggedEl.cloneNode(true);
     this.ghostEl.style.width = `${this.draggedEl.offsetWidth}px`;
+    this.ghostEl.style.height = `${this.draggedEl.offsetHeight}px`;
+
+    const { top, left } = this.draggedEl.getBoundingClientRect();
+    this.cursorInCardY = e.clientY - top;
+    this.cursorInCardX = e.clientX - left;
+
     this.ghostEl.classList.add("dragged");
     document.querySelector(".container").appendChild(this.ghostEl);
-    this.ghostEl.style.left = `${e.pageX - this.ghostEl.offsetWidth / 2}px`;
-    this.ghostEl.style.top = `${e.pageY - this.ghostEl.offsetHeight / 2}px`;
+    this.ghostEl.style.top = `${e.pageY - this.cursorInCardY}px`;
+    this.ghostEl.style.left = `${e.pageX - this.cursorInCardX}px`;
     this.draggedEl.style.opacity = 0;
     this.empty = document.createElement("li");
     this.empty.classList.add("empty");
@@ -43,8 +49,8 @@ export default class DragDrop {
     this.ghostEl.classList.add("hidden");
     this.elem = document.elementFromPoint(e.clientX, e.clientY);
     this.ghostEl.classList.remove("hidden");
-    this.ghostEl.style.left = `${e.pageX - this.ghostEl.offsetWidth / 2}px`;
-    this.ghostEl.style.top = `${e.pageY - this.ghostEl.offsetHeight / 2}px`;
+    this.ghostEl.style.left = `${e.pageX - this.cursorInCardX}px`;
+    this.ghostEl.style.top = `${e.pageY - this.cursorInCardY}px`;
     if (this.elem.closest(".block")) {
       const parentEl = this.elem.closest(".block").querySelector("ul");
       if (!parentEl.hasChildNodes()) {

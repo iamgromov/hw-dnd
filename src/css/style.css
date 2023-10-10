@@ -109,11 +109,11 @@ h3 {
     border-bottom-right-radius: 10px;
 }
 
-.item.dragged {
-    border-radius: 10px;
+.dragged {
     position: absolute;
     z-index: 999;
     pointer-events: none;
+    border-radius: 10px;
     color: rgb(87, 89, 91);
     background-color: rgb(225, 228, 232);
     cursor: grabbing;
