@@ -24,8 +24,6 @@ export default class DragDrop {
     this.draggedEl = e.target.closest(".item");
     this.ghostEl = this.draggedEl.cloneNode(true);
     this.ghostEl.style.width = `${this.draggedEl.offsetWidth}px`;
-    this.ghostEl.style.height = `${this.draggedEl.offsetHeight}px`;
-
     const { top, left } = this.draggedEl.getBoundingClientRect();
     this.cursorInCardY = e.clientY - top;
     this.cursorInCardX = e.clientX - left;

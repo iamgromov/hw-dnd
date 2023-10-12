@@ -43,6 +43,8 @@ h3 {
 }
 
 .item {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 5px;
     padding: 10px 8px;
     list-style-type: none;
@@ -50,7 +52,7 @@ h3 {
     font-family: Arial, Helvetica, sans-serif;
     color: beige;
     background-color: slategrey;
-    cursor: pointer;
+    cursor: grab;   
 }
 
 .textarea {
@@ -88,9 +90,9 @@ h3 {
 }
 
 .close-item {
+    width: 20px;
+    height: 20px;
     padding: 3px 6px;
-    float: right;
-    box-sizing: border-box;
     font-size: 10px;
     color: rgb(87, 89, 91);
     border-radius: 6px;
